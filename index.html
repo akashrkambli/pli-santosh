@@ -12,6 +12,7 @@
             --ip-yellow: #FFD200;
             --ip-blue: #003366;
         }
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: #ffffff;
@@ -39,24 +40,24 @@
             background: var(--ip-yellow);
             color: var(--ip-blue);
             font-weight: 800;
-            padding: 4px 12px;
-            border-radius: 6px;
-            font-size: 0.7rem;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.65rem;
             display: inline-block;
         }
         .image-container {
-            height: 180px;
+            height: 160px;
             width: 100%;
             background-size: cover;
             background-position: center;
         }
-        .whatsapp-btn-sm { 
-            background-color: #25D366; 
+        .btn-navy { 
+            background-color: var(--ip-blue); 
             color: white; 
             transition: background 0.2s;
         }
-        .whatsapp-btn-sm:hover {
-            background-color: #1eb954;
+        .btn-navy:hover {
+            background-color: #002244;
         }
         .call-btn-dark {
             background-color: #001a33;
@@ -66,149 +67,300 @@
         .call-btn-dark:hover {
             background-color: #000000;
         }
+        .whatsapp-btn-green {
+            background-color: #25D366;
+            color: white;
+        }
+        
+        .feature-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .shortcut-nav {
+            background: #f1f3f5;
+            border-bottom: 1px solid #e9ecef;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-link {
+            font-size: 8px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--ip-blue);
+            transition: color 0.2s;
+            padding: 6px 0;
+            display: inline-block;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-link:hover { 
+            color: var(--ip-red); 
+            border-bottom-color: var(--ip-red);
+        }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- Navbar -->
-    <nav class="sticky top-0 z-50 bg-white border-b-2 border-gray-100 shadow-sm py-3 px-4 md:px-6">
+    <!-- Header & Identity -->
+    <nav class="bg-white py-4 px-4 md:px-6">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
             <div class="flex flex-col">
                 <h2 class="text-ip-red font-black text-lg md:text-xl leading-none tracking-tighter">INDIA POST</h2>
                 <h3 class="text-ip-blue font-bold text-xs md:text-sm tracking-widest uppercase">Postal Life Insurance</h3>
             </div>
             <div class="text-right border-l-2 border-gray-100 pl-4">
-                <p class="text-[9px] font-bold text-gray-400 uppercase tracking-wider">Licensed Advisor-MHDE17384</p>
+                <p class="text-[9px] font-bold text-gray-400 uppercase tracking-wider">Licensed Indiapost Departmental Advisor-MHDE17384</p>
                 <p class="text-xs md:text-sm font-extrabold text-ip-blue leading-tight uppercase">Libby Ann Fernandes</p>
                 <a href="tel:9881918841" class="text-xs font-bold text-ip-red tracking-wide">+91 9881918841</a>
             </div>
         </div>
     </nav>
 
+    <!-- Navigation Shortcuts -->
+    <div class="shortcut-nav shadow-sm overflow-x-auto whitespace-nowrap px-6">
+        <div class="max-w-6xl mx-auto flex justify-center gap-10 md:gap-16">
+            <a href="#benefits" class="nav-link">Benefits</a>
+            <a href="#milestones" class="nav-link">Milestones</a>
+            <a href="#eligibility" class="nav-link">Eligibility</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+    </div>
+
     <!-- Hero Section -->
-    <header class="hero-pattern text-white py-12 md:py-24 px-6 text-center">
+    <header class="hero-pattern text-white py-12 md:py-20 px-6 text-center">
         <div class="max-w-4xl mx-auto">
-            <h1 class="serif text-4xl md:text-6xl mb-6 leading-tight uppercase">Santosh Endowment Plan</h1>
-            <p class="text-lg md:text-2xl font-medium mb-4 text-ip-yellow opacity-90 uppercase tracking-wide">Government Safety. High Returns.</p>
-            <div class="w-24 h-1 bg-ip-yellow mx-auto mb-8 rounded-full"></div>
-            <p class="text-sm md:text-lg opacity-90 max-w-2xl mx-auto font-light leading-relaxed">
+            <h1 class="serif text-4xl md:text-5xl mb-6 leading-tight uppercase">Santosh Endowment Plan</h1>
+            <p class="text-lg md:text-xl font-medium mb-4 text-ip-yellow opacity-90 uppercase tracking-wide">Government Safety. High Returns.</p>
+            <div class="w-16 h-1 bg-ip-yellow mx-auto mb-8 rounded-full"></div>
+            <p class="text-sm md:text-base opacity-90 max-w-2xl mx-auto font-light leading-relaxed">
                 The most preferred life insurance plan by India Post, offering high bonus rates and total tax exemption under Section 80C.
             </p>
         </div>
     </header>
 
     <!-- Features Section -->
-    <section class="bg-white py-12 px-6 border-b border-gray-100">
-        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div class="p-4 rounded-2xl bg-gray-50">
-                <h3 class="text-ip-red font-black text-4xl mb-1">₹52/-</h3>
-                <p class="text-[11px] font-bold text-gray-500 uppercase tracking-widest">Bonus per ₹1,000 Sum Assured</p>
-            </div>
-            <div class="p-4 rounded-2xl bg-gray-50">
-                <h3 class="text-ip-red font-black text-4xl mb-1">Sovereign</h3>
-                <p class="text-[11px] font-bold text-gray-500 uppercase tracking-widest">Guarantee by Government of India</p>
-            </div>
-            <div class="p-4 rounded-2xl bg-gray-50">
-                <h3 class="text-ip-red font-black text-4xl mb-1">Max Tax</h3>
-                <p class="text-[11px] font-bold text-gray-500 uppercase tracking-widest">Benefits under Section 80C</p>
+    <section id="benefits" class="bg-white py-10 px-6 border-b border-gray-100 scroll-mt-10">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-center text-xs font-black tracking-[0.2em] text-gray-400 uppercase mb-8">Exclusive Plan Benefits</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3 text-center">
+                <!-- Bonus Card -->
+                <div class="feature-card p-4 rounded-xl bg-gradient-to-br from-red-50 to-white border-b-4 border-ip-red">
+                    <div class="text-ip-red mb-2 flex justify-center">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12"/><path d="M6 8h12"/><path d="m6 13 8.5 8"/><path d="M6 13h3"/><path d="M9 13c6.667 0 6.667-10 0-10"/></svg>
+                    </div>
+                    <h3 class="text-ip-red font-black text-xl mb-1">₹52/-</h3>
+                    <p class="text-[8px] font-bold text-gray-600 uppercase tracking-tighter leading-tight">Bonus per ₹1k Sum Assured</p>
+                </div>
+                <!-- Sovereign Card -->
+                <div class="feature-card p-4 rounded-xl bg-gradient-to-br from-blue-50 to-white border-b-4 border-ip-blue">
+                    <div class="text-ip-blue mb-2 flex justify-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                    <h3 class="text-ip-blue font-black text-xs uppercase mb-1">Sovereign</h3>
+                    <p class="text-[8px] font-bold text-gray-600 uppercase tracking-tighter leading-tight">Govt of India Guarantee</p>
+                </div>
+                <!-- Tax Card -->
+                <div class="feature-card p-4 rounded-xl bg-gradient-to-br from-yellow-50 to-white border-b-4 border-ip-yellow">
+                    <div class="text-ip-blue mb-2 flex justify-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+                    <h3 class="text-ip-blue font-black text-xs uppercase mb-1">80C Tax</h3>
+                    <p class="text-[8px] font-bold text-gray-600 uppercase tracking-tighter leading-tight">Full Exemption Benefits</p>
+                </div>
+                <!-- Returns Card -->
+                <div class="feature-card p-4 rounded-xl bg-gradient-to-br from-green-50 to-white border-b-4 border-green-500">
+                    <div class="text-green-600 mb-2 flex justify-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+                    <h3 class="text-green-600 font-black text-xl mb-1">8.08%</h3>
+                    <p class="text-[8px] font-bold text-gray-600 uppercase tracking-tighter leading-tight">Returns Upto</p>
+                </div>
+                <!-- Lowest Premium Card -->
+                <div class="feature-card p-4 rounded-xl bg-gradient-to-br from-pink-50 to-white border-b-4 border-pink-500">
+                    <div class="text-pink-600 mb-2 flex justify-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 10l5 5 5-5M12 15V3"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9"/></svg></div>
+                    <h3 class="text-pink-600 font-black text-[10px] uppercase mb-1">Lowest</h3>
+                    <p class="text-[8px] font-bold text-gray-600 uppercase tracking-tighter leading-tight">Market Premium Rates</p>
+                </div>
+                <!-- Life Cover Card -->
+                <div class="feature-card p-4 rounded-xl bg-gradient-to-br from-purple-50 to-white border-b-4 border-purple-500">
+                    <div class="text-purple-600 mb-2 flex justify-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+                    <h3 class="text-purple-600 font-black text-xs uppercase mb-1">Life Cover</h3>
+                    <p class="text-[8px] font-bold text-gray-600 uppercase tracking-tighter leading-tight">Instant Protection</p>
+                </div>
+                <!-- 10(10D) Card -->
+                <div class="feature-card p-4 rounded-xl bg-gradient-to-br from-orange-50 to-white border-b-4 border-orange-500">
+                    <div class="text-orange-600 mb-2 flex justify-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+                    <h3 class="text-orange-600 font-black text-[10px] uppercase mb-1">Sec 10(10D)</h3>
+                    <p class="text-[8px] font-bold text-gray-600 uppercase tracking-tighter leading-tight">Tax Free Maturity*</p>
+                </div>
+                <!-- Loan Card -->
+                <div class="feature-card p-4 rounded-xl bg-gradient-to-br from-teal-50 to-white border-b-4 border-teal-500">
+                    <div class="text-teal-600 mb-2 flex justify-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg></div>
+                    <h3 class="text-teal-600 font-black text-xs uppercase mb-1">Loans</h3>
+                    <p class="text-[8px] font-bold text-gray-600 uppercase tracking-tighter leading-tight">Easy Availability*</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Goals Grid -->
-    <section class="max-w-7xl mx-auto px-6 py-16">
-        <h2 class="text-2xl md:text-3xl font-black text-center text-ip-blue mb-4 uppercase tracking-tight">Milestone Planning</h2>
-        <p class="text-center text-gray-500 mb-12 max-w-xl mx-auto text-sm">Select a milestone below to request a customized ROI sheet via WhatsApp.</p>
+    <section id="milestones" class="max-w-6xl mx-auto px-6 py-16 scroll-mt-10">
+        <h2 class="text-2xl md:text-3xl font-black text-center text-ip-blue mb-3 uppercase tracking-tight">Milestone Planning</h2>
+        <p class="text-center text-gray-500 mb-12 max-w-xl mx-auto text-sm">Select a milestone below for a customized Returns on Investment sheet.</p>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-            <!-- Goal Cards -->
-            <div class="goal-card rounded-2xl overflow-hidden shadow-sm">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+            <!-- Higher Education -->
+            <div class="goal-card rounded-xl overflow-hidden shadow-sm">
                 <div class="image-container" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=500');"></div>
-                <div class="p-6 flex-grow flex flex-col">
+                <div class="p-5 flex-grow flex-col flex">
                     <div class="mb-2"><span class="term-badge">10-14 Year Term</span></div>
-                    <h3 class="text-xl font-bold mb-2">Higher Education</h3>
-                    <p class="text-gray-600 text-sm mb-6 flex-grow">Secure your children's future education and coaching expenses with a guaranteed fund.</p>
-                    <a href="https://wa.me/919881918841?text=Hi%20Libby,%20I'd%20like%20a%201-to-1%20consultancy%20and%20an%20ROI%20sheet%20for%20Higher%20Education%20planning." class="whatsapp-btn-sm text-center py-3 rounded-xl font-black text-[10px] uppercase tracking-wider">
-                        WhatsApp Libby for ROI Quote
+                    <h3 class="text-lg font-bold mb-2">Higher Education</h3>
+                    <p class="text-gray-600 text-xs mb-6 flex-grow">Secure your children's future education and coaching with a guaranteed fund.</p>
+                    <a href="https://wa.me/919881918841?text=Hi%20Libby,%20I'd%20like%20a%201-to-1%20consultancy%20and%20a%20Returns%20on%20Investment%20sheet%20for%20Higher%20Education%20planning." class="btn-navy text-center py-3 rounded-lg font-black text-[10px] uppercase tracking-wider">
+                        Get Quote
                     </a>
                 </div>
             </div>
 
-            <div class="goal-card rounded-2xl overflow-hidden shadow-sm">
+            <!-- Dream Drive -->
+            <div class="goal-card rounded-xl overflow-hidden shadow-sm">
                 <div class="image-container" style="background-image: url('https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&q=80&w=500');"></div>
-                <div class="p-6 flex-grow flex flex-col">
+                <div class="p-5 flex-grow flex-col flex">
                     <div class="mb-2"><span class="term-badge">5-9 Year Term</span></div>
-                    <h3 class="text-xl font-bold mb-2">Dream Drive</h3>
-                    <p class="text-gray-600 text-sm mb-6 flex-grow">Avoid car loans. Use Santosh high bonus rates to self-finance your next vehicle.</p>
-                    <a href="https://wa.me/919881918841?text=Hi%20Libby,%20I'd%20like%20a%201-to-1%20consultancy%20and%20an%20ROI%20sheet%20for%20buying%20a%20Dream%20Car." class="whatsapp-btn-sm text-center py-3 rounded-xl font-black text-[10px] uppercase tracking-wider">
-                        WhatsApp Libby for ROI Quote
+                    <h3 class="text-lg font-bold mb-2">Dream Drive</h3>
+                    <p class="text-gray-600 text-xs mb-6 flex-grow">Avoid car loans. Use high bonus rates to self-finance your next vehicle purchase.</p>
+                    <a href="https://wa.me/919881918841?text=Hi%20Libby,%20I'd%20like%20a%201-to-1%20consultancy%20and%20a%20Returns%20on%20Investment%20sheet%20for%20buying%20a%20Dream%20Car." class="btn-navy text-center py-3 rounded-lg font-black text-[10px] uppercase tracking-wider">
+                        Get Quote
                     </a>
                 </div>
             </div>
 
-            <div class="goal-card rounded-2xl overflow-hidden shadow-sm">
+            <!-- Business Expansion -->
+            <div class="goal-card rounded-xl overflow-hidden shadow-sm">
                 <div class="image-container" style="background-image: url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=500');"></div>
-                <div class="p-6 flex-grow flex flex-col">
+                <div class="p-5 flex-grow flex-col flex">
                     <div class="mb-2"><span class="term-badge">5-14 Year Term</span></div>
-                    <h3 class="text-xl font-bold mb-2">Business Expansion</h3>
-                    <p class="text-gray-600 text-sm mb-6 flex-grow">Invest in your professional growth, office space, or equipment with safe government yields.</p>
-                    <a href="https://wa.me/919881918841?text=Hi%20Libby,%20I'd%20like%20a%201-to-1%20consultancy%20and%20an%20ROI%20sheet%20for%20Business%20Expansion." class="whatsapp-btn-sm text-center py-3 rounded-xl font-black text-[10px] uppercase tracking-wider">
-                        WhatsApp Libby for ROI Quote
+                    <h3 class="text-lg font-bold mb-2">Business Expansion</h3>
+                    <p class="text-gray-600 text-xs mb-6 flex-grow">Invest in professional growth or office space with safe, high government yields.</p>
+                    <a href="https://wa.me/919881918841?text=Hi%20Libby,%20I'd%20like%20a%201-to-1%20consultancy%20and%20a%20Returns%20on%20Investment%20sheet%20for%20Business%20Expansion." class="btn-navy text-center py-3 rounded-lg font-black text-[10px] uppercase tracking-wider">
+                        Get Quote
                     </a>
                 </div>
             </div>
 
-            <div class="goal-card rounded-2xl overflow-hidden shadow-sm">
+            <!-- Marriage & Family -->
+            <div class="goal-card rounded-xl overflow-hidden shadow-sm">
                 <div class="image-container" style="background-image: url('https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=80&w=500');"></div>
-                <div class="p-6 flex-grow flex flex-col">
+                <div class="p-5 flex-grow flex-col flex">
                     <div class="mb-2"><span class="term-badge">5-10 Year Term</span></div>
-                    <h3 class="text-xl font-bold mb-2">Marriage & Family</h3>
-                    <p class="text-gray-600 text-sm mb-6 flex-grow">Plan for a grand celebration or settle family responsibilities without financial stress.</p>
-                    <a href="https://wa.me/919881918841?text=Hi%20Libby,%20I'd%20like%20a%201-to-1%20consultancy%20and%20an%20ROI%20sheet%20for%20Marriage%20planning." class="whatsapp-btn-sm text-center py-3 rounded-xl font-black text-[10px] uppercase tracking-wider">
-                        WhatsApp Libby for ROI Quote
+                    <h3 class="text-lg font-bold mb-2">Marriage & Family</h3>
+                    <p class="text-gray-600 text-xs mb-6 flex-grow">Plan for a grand celebration or family responsibilities without financial stress.</p>
+                    <a href="https://wa.me/919881918841?text=Hi%20Libby,%20I'd%20like%20a%201-to-1%20consultancy%20and%20a%20Returns%20on%20Investment%20sheet%20for%20Marriage%20planning." class="btn-navy text-center py-3 rounded-lg font-black text-[10px] uppercase tracking-wider">
+                        Get Quote
                     </a>
                 </div>
             </div>
 
-            <div class="goal-card rounded-2xl overflow-hidden shadow-sm">
+            <!-- Home Upgrades -->
+            <div class="goal-card rounded-xl overflow-hidden shadow-sm">
                 <div class="image-container" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=500');"></div>
-                <div class="p-6 flex-grow flex flex-col">
+                <div class="p-5 flex-grow flex-col flex">
                     <div class="mb-2"><span class="term-badge">10-14 Year Term</span></div>
-                    <h3 class="text-xl font-bold mb-2">Home Upgrades</h3>
-                    <p class="text-gray-600 text-sm mb-6 flex-grow">Fund your luxury home renovation or down payment with zero market risk.</p>
-                    <a href="https://wa.me/919881918841?text=Hi%20Libby,%20I'd%20like%20a%201-to-1%20consultancy%20and%20an%20ROI%20sheet%20for%20Home%20Upgrades." class="whatsapp-btn-sm text-center py-3 rounded-xl font-black text-[10px] uppercase tracking-wider">
-                        WhatsApp Libby for ROI Quote
+                    <h3 class="text-lg font-bold mb-2">Home Upgrades</h3>
+                    <p class="text-gray-600 text-xs mb-6 flex-grow">Fund your luxury renovation or down payment with zero market risk.</p>
+                    <a href="https://wa.me/919881918841?text=Hi%20Libby,%20I'd%20like%20a%201-to-1%20consultancy%20and%20a%20Returns%20on%20Investment%20sheet%20for%20Home%20Upgrades." class="btn-navy text-center py-3 rounded-lg font-black text-[10px] uppercase tracking-wider">
+                        Get Quote
                     </a>
                 </div>
             </div>
 
-            <div class="goal-card rounded-2xl overflow-hidden shadow-sm">
+            <!-- Wealth Security -->
+            <div class="goal-card rounded-xl overflow-hidden shadow-sm">
                 <div class="image-container" style="background-image: url('https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&q=80&w=500');"></div>
-                <div class="p-6 flex-grow flex flex-col">
-                    <div class="mb-2"><span class="term-badge">5-8 Year Term</span></div>
-                    <h3 class="text-xl font-bold mb-2">Wealth Security</h3>
-                    <p class="text-gray-600 text-sm mb-6 flex-grow">Create a risk-free corpus for emergencies or early retirement planning.</p>
-                    <a href="https://wa.me/919881918841?text=Hi%20Libby,%20I'd%20like%20a%201-to-1%20consultancy%20and%20an%20ROI%20sheet%20for%20Wealth%20Security." class="whatsapp-btn-sm text-center py-3 rounded-xl font-black text-[10px] uppercase tracking-wider">
-                        WhatsApp Libby for ROI Quote
+                <div class="p-5 flex-grow flex-col flex">
+                    <div class="mb-2"><span class="term-badge">10-14 Year Term</span></div>
+                    <h3 class="text-lg font-bold mb-2">Wealth Security</h3>
+                    <p class="text-gray-600 text-xs mb-6 flex-grow">Create a risk-free corpus for emergencies or early retirement planning.</p>
+                    <a href="https://wa.me/919881918841?text=Hi%20Libby,%20I'd%20like%20a%201-to-1%20consultancy%20and%20a%20Returns%20on%20Investment%20sheet%20for%20Wealth%20Security." class="btn-navy text-center py-3 rounded-lg font-black text-[10px] uppercase tracking-wider">
+                        Get Quote
                     </a>
                 </div>
             </div>
         </div>
 
-        <!-- SPECIALIZED CONSULTANCY SECTION -->
-        <div class="max-w-4xl mx-auto text-center border-t-2 border-gray-100 pt-16 mb-16">
+        <!-- ELIGIBILITY CRITERIA SECTION -->
+        <div id="eligibility" class="max-w-6xl mx-auto mb-20 bg-gray-50 rounded-3xl p-8 md:p-12 border border-gray-100 scroll-mt-10">
+            <h2 class="text-2xl md:text-3xl font-black text-ip-blue mb-8 uppercase tracking-tight text-center">Eligibility Criteria</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Groups -->
+                <div>
+                    <h3 class="text-sm font-black text-ip-red uppercase tracking-widest mb-6">Eligible Occupational Groups</h3>
+                    <ul class="space-y-4 text-xs md:text-sm text-gray-700 font-medium">
+                        <li class="flex items-start gap-3">
+                            <span class="text-ip-red mt-1">●</span>
+                            <span>Central/State Government employees (including postal staff)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-ip-red mt-1">●</span>
+                            <span>Defence and Para-Military forces personnel</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-ip-red mt-1">●</span>
+                            <span>Public Sector Undertakings (PSUs) & Nationalized Banks staff</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-ip-red mt-1">●</span>
+                            <span>Government-aided or recognized educational institution employees</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-ip-red mt-1">●</span>
+                            <span>Professionals: Doctors, Engineers (Post-GATE), CAs, Lawyers, Architects</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-ip-red mt-1">●</span>
+                            <span>Private sector employees (NSE/BSE listed firms) with PF & Gratuity coverage</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Age & Others -->
+                <div class="flex flex-col gap-8">
+                    <div>
+                        <h3 class="text-sm font-black text-ip-red uppercase tracking-widest mb-4">Age & Maturity</h3>
+                        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                            <p class="text-gray-700 text-sm mb-4 leading-relaxed">
+                                <span class="font-bold text-ip-blue">Entry Age:</span> 19 to 55 Years
+                            </p>
+                            <p class="text-gray-700 text-sm leading-relaxed">
+                                <span class="font-bold text-ip-blue">Maturity Options:</span> 35, 40, 45, 50, 55, 58, or 60 Years
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-black text-ip-red uppercase tracking-widest mb-4">Nationality</h3>
+                        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                            <p class="text-gray-700 text-sm">Must be an <span class="font-bold text-ip-blue">Indian Citizen</span> or a person of Indian origin.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTACT SECTION -->
+        <div id="contact" class="max-w-4xl mx-auto text-center border-t-2 border-gray-100 pt-16 mb-16 scroll-mt-10">
             <h3 class="text-xl md:text-2xl font-bold text-ip-blue mb-3">
-                "Specialized 1-to-1 consultancy with complete transparency on investments"
+                "Specialized 1-to-1 consultancy with complete transparency"
             </h3>
             <p class="text-lg md:text-xl text-ip-red font-semibold mb-10">
-                "Get your personalized ROI sheet before you secure your future."
+                "Get your personalized Returns on Investment sheet before you secure your future."
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="tel:9881918841" class="call-btn-dark px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-widest shadow-lg hover:scale-105 transition-transform flex items-center justify-center gap-2">
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
                     Call Libby
                 </a>
-                <a href="https://wa.me/919881918841?text=Hi%20Libby,%20I%20am%20interested%20in%20a%20consultancy%20for%20PLI%20Santosh%20and%20would%20like%20to%20see%20an%20ROI%20sheet." class="whatsapp-btn-sm px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-widest shadow-lg hover:scale-105 transition-transform flex items-center justify-center gap-2">
+                <a href="https://wa.me/919881918841?text=Hi%20Libby,%20I%20am%20interested%20in%20a%20consultancy%20for%20PLI%20Santosh%20and%20would%20like%20to%20see%20a%20Returns%20on%20Investment%20sheet." class="whatsapp-btn-green px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-widest shadow-lg hover:scale-105 transition-transform flex items-center justify-center gap-2">
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.484 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.309 1.656zm6.224-3.82l.303.18c1.397.83 3.007 1.27 4.654 1.271 5.033 0 9.13-4.097 9.133-9.134.002-2.438-.946-4.731-2.67-6.456s-4.017-2.673-6.452-2.673c-5.035 0-9.132 4.097-9.134 9.134 0 1.696.444 3.342 1.286 4.757l.199.335-1.051 3.834 3.932-1.03zm10.744-6.405c-.3-.15-1.775-.875-2.05-.975-.275-.1-.475-.15-.675.15s-.775.975-.95 1.175-.35.225-.65.075c-.3-.15-1.267-.467-2.414-1.492-.893-.795-1.495-1.777-1.67-2.077s-.019-.462.13-.611c.135-.133.3-.35.45-.525.15-.175.2-.3.3-.5s.05-.375-.025-.525-.675-1.625-.925-2.225c-.244-.583-.491-.504-.675-.513-.175-.008-.375-.01-.575-.01s-.525.075-.8.375c-.275.3-1.05 1.025-1.05 2.5s1.075 2.9 1.225 3.1c.15.2 2.116 3.231 5.125 4.532.715.31 1.273.495 1.708.635.718.228 1.372.196 1.889.118.577-.088 1.775-.725 2.025-1.425s.25-1.3.175-1.425-.275-.225-.575-.375z"/></svg>
                     WhatsApp Libby
                 </a>
@@ -218,12 +370,27 @@
 
     <!-- Footer -->
     <footer class="py-12 bg-gray-50 text-center px-6 border-t border-gray-100">
-        <p class="text-[10px] font-bold text-gray-500 tracking-widest uppercase mb-3">
-            Libby Ann Fernandes | Licensed Advisor-MHDE17384 | +91 9881918841
-        </p>
-        <p class="text-[9px] text-gray-400 max-w-lg mx-auto leading-relaxed italic">
-            The Santosh Endowment Plan is a flagship product of India Post. All returns are backed by the Sovereign Guarantee of the Government of India.
-        </p>
+        <div class="max-w-6xl mx-auto">
+            <p class="text-[10px] font-bold text-gray-500 tracking-widest uppercase mb-6">
+                Libby Ann Fernandes | Licensed Indiapost Departmental Advisor-MHDE17384 | +91 9881918841
+            </p>
+            
+            <!-- Mandatory Disclosures -->
+            <div class="bg-white p-6 rounded-2xl border border-gray-200 text-left max-w-3xl mx-auto mb-8 shadow-sm">
+                <h4 class="text-[10px] font-black text-ip-blue uppercase mb-3 tracking-widest">Important Disclosures</h4>
+                <ul class="space-y-3 text-[9px] md:text-[10px] text-gray-500 font-medium leading-relaxed">
+                    <li class="flex gap-2"><span>*</span> <span>Maturity proceeds from PLI Santosh Endowment Assurance, including sum assured and accrued bonuses, are fully tax-exempt under Section 10(10D) of the Income Tax Act, provided the annual premium does not exceed 10% of the sum assured.</span></li>
+                    <li class="flex gap-2"><span>*</span> <span>Bonus rates are subject to change as per Govt. Norms. Current rates are historical illustrations.</span></li>
+                    <li class="flex gap-2"><span>*</span> <span>Loans on PLI Santosh Endowment Assurance become available after 3 full years of policy premiums have been paid. This is against the policy's acquired surrender value, up to 90% of that value.</span></li>
+                    <li class="flex gap-2"><span>*</span> <span>Surrender value is calculated based on premiums paid, policy term, and surrender factors (typically 30% after 3-5 years, increasing thereafter).</span></li>
+                    <li class="flex gap-2"><span>*</span> <span>No bonus is paid if surrendered before 5 policy years; proportionate bonus on reduced sum assured applies after 5 years.</span></li>
+                </ul>
+            </div>
+
+            <p class="text-[9px] text-gray-400 max-w-lg mx-auto leading-relaxed italic">
+                The Santosh Endowment Plan is a flagship product of India Post. All returns are backed by the Sovereign Guarantee of the Government of India. Returns on Investment sheets provided are illustrations based on current bonus rates.
+            </p>
+        </div>
     </footer>
 
 </body>
