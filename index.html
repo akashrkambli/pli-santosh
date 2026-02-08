@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>India Post PLI | Libby Ann Fernandes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Bree+Serif&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ip-red: #E31E24;
+            --ip-yellow: #FFD200;
+            --ip-blue: #003366;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        .serif { font-family: 'Bree Serif', serif; }
+        .hero-pattern {
+            background: linear-gradient(135deg, var(--ip-red) 0%, #b31419 100%);
+        }
+        .goal-card {
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .goal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border-color: var(--ip-yellow);
+        }
+        .term-badge {
+            background: var(--ip-yellow);
+            color: var(--ip-blue);
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            display: inline-block;
+        }
+        .image-container {
+            height: 180px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+        .whatsapp-btn-sm { 
+            background-color: #25D366; 
+            color: white; 
+            transition: background 0.2s;
+        }
+        .whatsapp-btn-sm:hover {
+            background-color: #1eb954;
+        }
+        .call-btn-dark {
+            background-color: #001a33;
+            color: white;
+            transition: background 0.2s;
+        }
+        .call-btn-dark:hover {
+            background-color: #000000;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-white border-b-2 border-gray-100 shadow-sm py-3 px-4 md:px-6">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="flex flex-col">
+                <h2 class="text-ip-red font-black text-lg md:text-xl leading-none tracking-tighter">INDIA POST</h2>
+                <h3 class="text-ip-blue font-bold text-xs md:text-sm tracking-widest uppercase">Postal Life Insurance</h3>
+            </div>
+            <div class="text-right border-l-2 border-gray-100 pl-4">
+                <p class="text-[9px] font-bold text-gray-400 uppercase tracking-wider">Licensed Advisor-MHDE17384</p>
+                <p class="text-xs md:text-sm font-extrabold text-ip-blue leading-tight uppercase">Libby Ann Fernandes</p>
+                <a href="tel:9881918841" class="text-xs font-bold text-ip-red tracking-wide">+91 9881918841</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-pattern text-white py-12 md:py-24 px-6 text-center">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="serif text-4xl md:text-6xl mb-6 leading-tight uppercase">Santosh Endowment Plan</h1>
+            <p class="text-lg md:text-2xl font-medium mb-4 text-ip-yellow opacity-90 uppercase tracking-wide">Government Safety. High Returns.</p>
+            <div class="w-24 h-1 bg-ip-yellow mx-auto mb-8 rounded-full"></div>
+            <p class="text-sm md:text-lg opacity-90 max-w-2xl mx-auto font-light leading-relaxed">
+                The most preferred life insurance plan by India Post, offering high bonus rates and total tax exemption under Section 80C.
+            </p>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="bg-white py-12 px-6 border-b border-gray-100">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div class="p-4 rounded-2xl bg-gray-50">
+                <h3 class="text-ip-red font-black text-4xl mb-1">₹52/-</h3>
+                <p class="text-[11px] font-bold text-gray-500 uppercase tracking-widest">Bonus per ₹1,000 Sum Assured</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-gray-50">
+                <h3 class="text-ip-red font-black text-4xl mb-1">Sovereign</h3>
+                <p class="text-[11px] font-bold text-gray-500 uppercase tracking-widest">Guarantee by Government of India</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-gray-50">
+                <h3 class="text-ip-red font-black text-4xl mb-1">Max Tax</h3>
+                <p class="text-[11px] font-bold text-gray-500 uppercase tracking-widest">Benefits under Section 80C</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Goals Grid -->
+    <section class="max-w-7xl mx-auto px-6 py-16">
+        <h2 class="text-2xl md:text-3xl font-black text-center text-ip-blue mb-4 uppercase tracking-tight">Milestone Planning</h2>
+        <p class="text-center text-gray-500 mb-12 max-w-xl mx-auto text-sm">Select a milestone below to request a customized ROI sheet via WhatsApp.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+            <!-- Goal Cards -->
+            <div class="goal-card rounded-2xl overflow-hidden shadow-sm">
+                <div class="image-container" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=500');"></div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <div class="mb-2"><span class="term-badge">10-14 Year Term</span></div>
+                    <h3 class="text-xl font-bold mb-2">Higher Education</h3>
+                    <p class="text-gray-600 text-sm mb-6 flex-grow">Secure your children's future education and coaching expenses with a guaranteed fund.</p>
+                    <a href="https://wa.me/919881918841?text=Hi%20Libby,%20I'd%20like%20a%201-to-1%20consultancy%20and%20an%20ROI%20sheet%20for%20Higher%20Education%20planning." class="whatsapp-btn-sm text-center py-3 rounded-xl font-black text-[10px] uppercase tracking-wider">
+                        WhatsApp Libby for ROI Quote
+                    </a>
+                </div>
+            </div>
+
+            <div class="goal-card rounded-2xl overflow-hidden shadow-sm">
+                <div class="image-container" style="background-image: url('https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&q=80&w=500');"></div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <div class="mb-2"><span class="term-badge">5-9 Year Term</span></div>
+                    <h3 class="text-xl font-bold mb-2">Dream Drive</h3>
+                    <p class="text-gray-600 text-sm mb-6 flex-grow">Avoid car loans. Use Santosh high bonus rates to self-finance your next vehicle.</p>
+                    <a href="https://wa.me/919881918841?text=Hi%20Libby,%20I'd%20like%20a%201-to-1%20consultancy%20and%20an%20ROI%20sheet%20for%20buying%20a%20Dream%20Car." class="whatsapp-btn-sm text-center py-3 rounded-xl font-black text-[10px] uppercase tracking-wider">
+                        WhatsApp Libby for ROI Quote
+                    </a>
+                </div>
+            </div>
+
+            <div class="goal-card rounded-2xl overflow-hidden shadow-sm">
+                <div class="image-container" style="background-image: url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=500');"></div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <div class="mb-2"><span class="term-badge">5-14 Year Term</span></div>
+                    <h3 class="text-xl font-bold mb-2">Business Expansion</h3>
+                    <p class="text-gray-600 text-sm mb-6 flex-grow">Invest in your professional growth, office space, or equipment with safe government yields.</p>
+                    <a href="https://wa.me/919881918841?text=Hi%20Libby,%20I'd%20like%20a%201-to-1%20consultancy%20and%20an%20ROI%20sheet%20for%20Business%20Expansion." class="whatsapp-btn-sm text-center py-3 rounded-xl font-black text-[10px] uppercase tracking-wider">
+                        WhatsApp Libby for ROI Quote
+                    </a>
+                </div>
+            </div>
+
+            <div class="goal-card rounded-2xl overflow-hidden shadow-sm">
+                <div class="image-container" style="background-image: url('https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=80&w=500');"></div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <div class="mb-2"><span class="term-badge">5-10 Year Term</span></div>
+                    <h3 class="text-xl font-bold mb-2">Marriage & Family</h3>
+                    <p class="text-gray-600 text-sm mb-6 flex-grow">Plan for a grand celebration or settle family responsibilities without financial stress.</p>
+                    <a href="https://wa.me/919881918841?text=Hi%20Libby,%20I'd%20like%20a%201-to-1%20consultancy%20and%20an%20ROI%20sheet%20for%20Marriage%20planning." class="whatsapp-btn-sm text-center py-3 rounded-xl font-black text-[10px] uppercase tracking-wider">
+                        WhatsApp Libby for ROI Quote
+                    </a>
+                </div>
+            </div>
+
+            <div class="goal-card rounded-2xl overflow-hidden shadow-sm">
+                <div class="image-container" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=500');"></div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <div class="mb-2"><span class="term-badge">10-14 Year Term</span></div>
+                    <h3 class="text-xl font-bold mb-2">Home Upgrades</h3>
+                    <p class="text-gray-600 text-sm mb-6 flex-grow">Fund your luxury home renovation or down payment with zero market risk.</p>
+                    <a href="https://wa.me/919881918841?text=Hi%20Libby,%20I'd%20like%20a%201-to-1%20consultancy%20and%20an%20ROI%20sheet%20for%20Home%20Upgrades." class="whatsapp-btn-sm text-center py-3 rounded-xl font-black text-[10px] uppercase tracking-wider">
+                        WhatsApp Libby for ROI Quote
+                    </a>
+                </div>
+            </div>
+
+            <div class="goal-card rounded-2xl overflow-hidden shadow-sm">
+                <div class="image-container" style="background-image: url('https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&q=80&w=500');"></div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <div class="mb-2"><span class="term-badge">5-8 Year Term</span></div>
+                    <h3 class="text-xl font-bold mb-2">Wealth Security</h3>
+                    <p class="text-gray-600 text-sm mb-6 flex-grow">Create a risk-free corpus for emergencies or early retirement planning.</p>
+                    <a href="https://wa.me/919881918841?text=Hi%20Libby,%20I'd%20like%20a%201-to-1%20consultancy%20and%20an%20ROI%20sheet%20for%20Wealth%20Security." class="whatsapp-btn-sm text-center py-3 rounded-xl font-black text-[10px] uppercase tracking-wider">
+                        WhatsApp Libby for ROI Quote
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- SPECIALIZED CONSULTANCY SECTION -->
+        <div class="max-w-4xl mx-auto text-center border-t-2 border-gray-100 pt-16 mb-16">
+            <h3 class="text-xl md:text-2xl font-bold text-ip-blue mb-3">
+                "Specialized 1-to-1 consultancy with complete transparency on investments"
+            </h3>
+            <p class="text-lg md:text-xl text-ip-red font-semibold mb-10">
+                "Get your personalized ROI sheet before you secure your future."
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="tel:9881918841" class="call-btn-dark px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-widest shadow-lg hover:scale-105 transition-transform flex items-center justify-center gap-2">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    Call Libby
+                </a>
+                <a href="https://wa.me/919881918841?text=Hi%20Libby,%20I%20am%20interested%20in%20a%20consultancy%20for%20PLI%20Santosh%20and%20would%20like%20to%20see%20an%20ROI%20sheet." class="whatsapp-btn-sm px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-widest shadow-lg hover:scale-105 transition-transform flex items-center justify-center gap-2">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.484 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.309 1.656zm6.224-3.82l.303.18c1.397.83 3.007 1.27 4.654 1.271 5.033 0 9.13-4.097 9.133-9.134.002-2.438-.946-4.731-2.67-6.456s-4.017-2.673-6.452-2.673c-5.035 0-9.132 4.097-9.134 9.134 0 1.696.444 3.342 1.286 4.757l.199.335-1.051 3.834 3.932-1.03zm10.744-6.405c-.3-.15-1.775-.875-2.05-.975-.275-.1-.475-.15-.675.15s-.775.975-.95 1.175-.35.225-.65.075c-.3-.15-1.267-.467-2.414-1.492-.893-.795-1.495-1.777-1.67-2.077s-.019-.462.13-.611c.135-.133.3-.35.45-.525.15-.175.2-.3.3-.5s.05-.375-.025-.525-.675-1.625-.925-2.225c-.244-.583-.491-.504-.675-.513-.175-.008-.375-.01-.575-.01s-.525.075-.8.375c-.275.3-1.05 1.025-1.05 2.5s1.075 2.9 1.225 3.1c.15.2 2.116 3.231 5.125 4.532.715.31 1.273.495 1.708.635.718.228 1.372.196 1.889.118.577-.088 1.775-.725 2.025-1.425s.25-1.3.175-1.425-.275-.225-.575-.375z"/></svg>
+                    WhatsApp Libby
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-gray-50 text-center px-6 border-t border-gray-100">
+        <p class="text-[10px] font-bold text-gray-500 tracking-widest uppercase mb-3">
+            Libby Ann Fernandes | Licensed Advisor-MHDE17384 | +91 9881918841
+        </p>
+        <p class="text-[9px] text-gray-400 max-w-lg mx-auto leading-relaxed italic">
+            The Santosh Endowment Plan is a flagship product of India Post. All returns are backed by the Sovereign Guarantee of the Government of India.
+        </p>
+    </footer>
+
+</body>
+</html>
