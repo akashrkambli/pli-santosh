@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PLI Santosh Official Advisor | Libby Ann Fernandes</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        :root {
+            --pli-red: #E31E24;
+            --pli-gold: #FFD700;
+            --pli-dark: #2c3e50;
+            --pli-blue: #003366;
+            --bg-age: #ffffff;
+            --bg-prem: #fffdf0;
+            --bg-invest: #f0f7ff;
+            --bg-earn: #f0fff4;
+            --bg-mat: #f5fffb;
+            --bg-irr: #fff5f5;
+        }
+
+        body { 
+            font-family: 'Segoe UI Condensed', 'Arial Narrow', sans-serif; 
+            background-color: #f4f7f6; 
+            margin: 0; 
+            padding: 4px;
+            color: var(--pli-dark);
+        }
+
+        .calc-container { 
+            background: #ffffff; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+            width: 100%; 
+            max-width: 480px; 
+            margin: auto; 
+            overflow: hidden; 
+        }
+        
+        .header { 
+            background: var(--pli-red); 
+            color: white; 
+            padding: 12px 8px; 
+            text-align: center; 
+            border-bottom: 3px solid var(--pli-gold); 
+            position: relative;
+        }
+
+        /* --- Home Button --- */
+        .home-btn {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+        }
+        .home-btn:hover { background: var(--pli-gold); color: var(--pli-red); }
+
+        .header .gov-txt { font-size: 0.6rem; text-transform: uppercase; font-weight: bold; margin-bottom: 2px; letter-spacing: 1px;}
+        .header h2 { margin: 0; font-size: 0.9rem; font-weight: 800; text-transform: uppercase;}
+
+        .input-body { padding: 12px 8px; background: #fff; border-bottom: 1px solid #eee; }
+        
+        .micro-row { 
+            display: flex; 
+            gap: 5px; 
+            justify-content: space-between; 
+            align-items: flex-end;
+            margin-bottom: 12px;
+        }
+        
+        .micro-group { flex: 1; }
+        .date-input { width: 105px !important; flex: none; } 
+        .sa-input-wrap { width: 65px !important; flex: none; }
+        .age-display-wrap { width: 45px !important; flex: none; }
+
+        label { display: block; font-weight: 800; font-size: 0.55rem; color: #666; margin-bottom: 3px; text-transform: uppercase; text-align: center;}
+        
+        input[type="date"], input[type="number"] { 
+            width: 100%; 
+            padding: 6px 2px; 
+            border: 2px solid #eee; 
+            border-radius: 4px; 
+            font-size: 0.8rem; 
+            box-sizing: border-box;
+            text-align: center;
+            font-weight: bold;
+            color: var(--pli-blue);
+        }
+
+        .age-box {
+            background: #fff9e6;
+            border: 2px solid var(--pli-gold);
+            border-radius: 4px;
+            height: 31px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1rem;
+            color: var(--pli-red);
+        }
+
+        .mode-selector {
+            display: flex;
+            background: #f0f0f0;
+            border-radius: 6px;
+            padding: 3px;
+            margin-bottom: 12px;
+        }
+        .mode-selector input { display: none; }
+        .mode-selector label {
+            flex: 1;
+            padding: 8px 0;
+            cursor: pointer;
+            font-size: 0.6rem;
+            font-weight: 800;
+            text-align: center;
+            border-radius: 4px;
+            transition: 0.2s;
+            margin-bottom: 0;
+            color: #777;
+        }
+        .mode-selector input:checked + label {
+            background: var(--pli-red);
+            color: white;
+        }
+
+        .slider-container { padding: 5px 0 10px 0; }
+        .range-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #e0e0e0;
+            outline: none;
+        }
+        .range-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 28px; 
+            height: 28px; 
+            border-radius: 50%;
+            background: var(--pli-red);
+            border: 3px solid white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            cursor: pointer;
+        }
+
+        .table-container { width: 100%; overflow-x: hidden; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.7rem; table-layout: fixed; }
+        th { 
+            background: #f8f9fa; 
+            padding: 8px 2px; 
+            border-bottom: 2px solid var(--pli-red); 
+            font-size: 0.55rem;
+            text-transform: uppercase;
+            color: #444;
+        }
+        td { padding: 8px 2px; border-bottom: 1px solid #eee; text-align: center; line-height: 1.2; }
+
+        .col-age { width: 16%; background: var(--bg-age); text-align: left; padding-left: 5px; font-weight: bold; border-right: 1px solid #eee; }
+        .col-prem { width: 14%; background: var(--bg-prem); font-size: 0.65rem; font-weight: bold; color: var(--pli-red); }
+        .col-invest { width: 16%; background: var(--bg-invest); color: #555; }
+        .col-earn { width: 19%; background: var(--bg-earn); color: #2980b9; font-weight: bold; }
+        .col-mat { width: 21%; background: var(--bg-mat); color: #27ae60; font-weight: 900; font-size: 0.75rem; }
+        .col-irr { width: 14%; background: var(--bg-irr); color: var(--pli-red); font-weight: bold; }
+
+        .mat-date-stack { display: block; font-size: 0.55rem; color: #888; font-weight: 500; margin-top: 1px; }
+
+        .contact-section {
+            padding: 15px 10px;
+            background: #fdfdfd;
+            border-top: 1px solid #eee;
+            text-align: center;
+        }
+        .contact-section h4 { 
+            margin: 0 0 10px 0; 
+            font-size: 0.7rem; 
+            text-transform: uppercase; 
+            color: var(--pli-blue); 
+            letter-spacing: 1px;
+        }
+        .btn-group { display: flex; gap: 8px; justify-content: center; margin-bottom: 10px; }
+        .contact-btn {
+            flex: 1;
+            padding: 10px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        .btn-call { background: var(--pli-blue); color: white; }
+        .btn-whatsapp { background: #25D366; color: white; }
+
+        .footer { 
+            font-size: 0.6rem; 
+            padding: 15px 10px; 
+            text-align: center; 
+            color: #666; 
+            background: #f8f9fa; 
+            border-top: 1px solid #eee; 
+        }
+        .advisor-info { font-weight: 800; color: var(--pli-blue); margin-bottom: 4px; text-transform: uppercase; }
+        .license-no { font-size: 0.5rem; color: #999; margin-bottom: 8px; display: block; }
+        .disclaimer { font-size: 0.5rem; color: #aaa; margin-top: 8px; font-style: italic; line-height: 1.4; }
+
+        .pdf-btn {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: 900;
+            cursor: pointer;
+            font-size: 0.8rem;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 3px 6px rgba(39, 174, 96, 0.2);
+        }
+
+        /* PDF Styles for Export */
+        #pdf-export-content { display: none; padding: 20px; background: white; }
+        .pdf-header { text-align: center; border-bottom: 2px solid #E31E24; margin-bottom: 15px; }
+        .pdf-section-title { background: #f8f9fa; padding: 5px; font-weight: bold; text-align: center; border: 1px solid #ddd; margin: 15px 0 5px 0; }
+        .pdf-table { width: 100%; border-collapse: collapse; font-size: 10px; margin-bottom: 10px; }
+        .pdf-table th, .pdf-table td { border: 1px solid #eee; padding: 4px; text-align: center; }
+    </style>
+</head>
+<body>
+
+<div class="calc-container">
+    <div class="header">
+        <a href="index.html" class="home-btn">🏠 Home</a>
+        <div class="gov-txt">Govt. of India • Dept. of Posts</div>
+        <h2>Santosh Endowment Assurance</h2>
+    </div>
+
+    <div class="input-body">
+        <div class="micro-row">
+            <div class="micro-group date-input">
+                <label>Birth Date</label>
+                <input type="date" id="dob" value="1995-01-01" onchange="calculateAll()">
+            </div>
+            <div class="micro-group date-input">
+                <label>Start Date</label>
+                <input type="date" id="startDate" onchange="calculateAll()">
+            </div>
+            <div class="micro-group sa-input-wrap">
+                <label>SA (Lacs)</label>
+                <input type="number" id="saInput" value="5.0" min="0.2" max="50" step="0.1" oninput="syncSlider(this.value)">
+            </div>
+            <div class="micro-group age-display-wrap">
+                <label>Age</label>
+                <div id="ageIndicator" class="age-box">--</div>
+            </div>
+        </div>
+
+        <div class="mode-selector">
+            <input type="radio" id="m" name="payMode" value="monthly" checked onclick="calculateAll()">
+            <label for="m">MONTHLY</label>
+            <input type="radio" id="q" name="payMode" value="quarterly" onclick="calculateAll()">
+            <label for="q">QUARTERLY</label>
+            <input type="radio" id="h" name="payMode" value="halfyearly" onclick="calculateAll()">
+            <label for="h">HALF-YLY</label>
+            <input type="radio" id="a" name="payMode" value="yearly" onclick="calculateAll()">
+            <label for="a">ANNUALLY</label>
+        </div>
+        
+        <div class="slider-container">
+            <input type="range" id="saSlider" class="range-slider" min="0.2" max="50" step="0.1" value="5" oninput="syncInput(this.value)">
+        </div>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th style="text-align: left; padding-left: 5px;">Maturity Age</th>
+                    <th>Net Prem</th>
+                    <th>Invested</th>
+                    <th>Earnings</th>
+                    <th>Maturity</th>
+                    <th>IRR</th>
+                </tr>
+            </thead>
+            <tbody id="comparisonBody"></tbody>
+        </table>
+    </div>
+
+    <div class="contact-section">
+        <h4>Connect for Expert Consultancy</h4>
+        <div class="btn-group">
+            <a href="tel:9881918841" class="contact-btn btn-call">📞 Call Libby</a>
+            <a href="https://wa.me/919881918841?text=Hi%20Libby,%20I%20checked%20the%20Santosh%20Calculator%20and%20want%20to%20discuss%20a%20plan." class="contact-btn btn-whatsapp">💬 WhatsApp</a>
+        </div>
+        <button class="pdf-btn" onclick="downloadPDF()">Download Full Quotation</button>
+    </div>
+
+    <div class="footer">
+        <div class="advisor-info">Libby Ann Fernandes</div>
+        <span class="license-no">Licensed Indiapost Departmental Advisor: MHDE17384</span>
+        Bonus: ₹52 per ₹1000 Sum Assured
+        <div class="disclaimer">*Returns are based on current bonus rates and are subject to Govt. of India norms.</div>
+    </div>
+</div>
+
+<div id="pdf-export-content">
+    <div class="pdf-header">
+        <h2 style="color: #E31E24; margin: 0;">Postal Life Insurance (PLI)</h2>
+        <p style="margin: 5px 0;">Santosh Plan Comparison - Libby Ann Fernandes</p>
+    </div>
+    <div id="pdf-inputs" style="font-size: 12px; margin-bottom: 10px;"></div>
+    <div id="pdf-tables-container"></div>
+</div>
+
+<script>
+    document.getElementById('startDate').valueAsDate = new Date();
+
+    const rates = {
+        "monthly": {
+            "19": {"35": 26, "40": 19, "45": 15, "50": 10, "55": 12, "58": 9, "60": 9},
+            "20": {"35": 27, "40": 20, "45": 16, "50": 13, "55": 10, "58": 10, "60": 9},
+            "21": {"35": 29, "40": 21, "45": 16, "50": 13, "55": 11, "58": 10, "60": 9},
+            "22": {"35": 32, "40": 22, "45": 17, "50": 14, "55": 11, "58": 10, "60": 10},
+            "23": {"35": 35, "40": 24, "45": 18, "50": 14, "55": 12, "58": 10, "60": 10},
+            "24": {"35": 38, "40": 26, "45": 19, "50": 15, "55": 12, "58": 11, "60": 10},
+            "25": {"35": 42, "40": 27, "45": 20, "50": 16, "55": 13, "58": 11, "60": 11},
+            "26": {"35": 47, "40": 29, "45": 21, "50": 16, "55": 13, "58": 12, "60": 11},
+            "27": {"35": 53, "40": 32, "45": 22, "50": 17, "55": 14, "58": 12, "60": 12},
+            "28": {"35": 61, "40": 35, "45": 24, "50": 18, "55": 14, "58": 13, "60": 12},
+            "29": {"35": 72, "40": 38, "45": 26, "50": 19, "55": 15, "58": 13, "60": 13},
+            "30": {"35": 86, "40": 42, "45": 28, "50": 20, "55": 16, "58": 14, "60": 13},
+            "31": {"40": 47, "45": 30, "50": 21, "55": 17, "58": 15, "60": 14},
+            "32": {"40": 53, "45": 32, "50": 23, "55": 17, "58": 15, "60": 14},
+            "33": {"40": 61, "45": 35, "50": 24, "55": 18, "58": 16, "60": 15},
+            "34": {"40": 72, "45": 38, "50": 26, "55": 19, "58": 17, "60": 15},
+            "35": {"40": 86, "45": 42, "50": 28, "55": 20, "58": 18, "60": 16},
+            "36": {"45": 47, "50": 30, "55": 22, "58": 19, "60": 17},
+            "37": {"45": 53, "50": 32, "55": 23, "58": 20, "60": 18},
+            "38": {"45": 61, "50": 25, "55": 35, "58": 21, "60": 19},
+            "39": {"45": 72, "50": 39, "55": 26, "58": 22, "60": 20},
+            "40": {"45": 87, "50": 43, "55": 28, "58": 23, "60": 21},
+            "41": {"50": 48, "55": 30, "58": 25, "60": 22},
+            "42": {"50": 54, "55": 33, "58": 27, "60": 24},
+            "43": {"50": 62, "55": 36, "58": 29, "60": 25},
+            "44": {"50": 72, "55": 39, "58": 31, "60": 27},
+            "45": {"50": 87, "55": 43, "58": 33, "60": 29},
+            "46": {"55": 48, "58": 36, "60": 31},
+            "47": {"55": 55, "58": 40, "60": 34},
+            "48": {"55": 63, "58": 44, "60": 37},
+            "49": {"55": 73, "58": 49, "60": 40},
+            "50": {"55": 88, "58": 55, "60": 44},
+            "51": {"58": 65, "60": 52},
+            "52": {"58": 75, "60": 59},
+            "53": {"58": 89, "60": 66},
+            "54": {"60": 76},
+            "55": {"60": 90}
+        },
+        "quarterly": {
+            "19": {"35": 77.9, "40": 56.9, "45": 44.9, "50": 36, "55": 30, "58": 27, "60": 27},
+            "20": {"35": 80.8, "40": 59.9, "45": 47.9, "50": 39, "55": 30, "58": 30, "60": 27},
+            "21": {"35": 86.8, "40": 62.9, "45": 47.9, "50": 39, "55": 33, "58": 30, "60": 27},
+            "22": {"35": 95.8, "40": 65.9, "45": 50.9, "50": 41.9, "55": 33, "58": 30, "60": 30},
+            "23": {"35": 104.8, "40": 71.9, "45": 53.9, "50": 41.9, "55": 36, "58": 30, "60": 30},
+            "24": {"35": 113.8, "40": 77.9, "45": 56.9, "50": 44.9, "55": 36, "58": 33, "60": 30},
+            "25": {"35": 125.7, "40": 80.8, "45": 59.9, "50": 47.9, "55": 39, "58": 33, "60": 33},
+            "26": {"35": 140.7, "40": 86.8, "45": 62.9, "50": 47.9, "55": 39, "58": 36, "60": 33},
+            "27": {"35": 158.7, "40": 95.8, "45": 65.9, "50": 50.9, "55": 41.9, "58": 36, "60": 36},
+            "28": {"35": 182.6, "40": 104.8, "45": 71.9, "50": 53.9, "55": 41.9, "58": 39, "60": 36},
+            "29": {"35": 215.5, "40": 113.8, "45": 77.9, "50": 56.9, "55": 44.9, "58": 39, "60": 39},
+            "30": {"35": 257.4, "40": 125.7, "45": 83.8, "50": 59.9, "55": 47.9, "58": 41.9, "60": 39},
+            "31": {"40": 140.7, "45": 89.8, "50": 62.9, "55": 50.9, "58": 44.9, "60": 41.9},
+            "32": {"40": 158.7, "45": 95.8, "50": 68.9, "55": 50.9, "58": 44.9, "60": 41.9},
+            "33": {"40": 182.6, "45": 104.8, "50": 71.9, "55": 53.9, "58": 47.9, "60": 44.9},
+            "34": {"40": 215.5, "45": 113.8, "50": 77.9, "55": 56.9, "58": 50.9, "60": 44.9},
+            "35": {"40": 257.4, "45": 125.7, "50": 83.8, "55": 59.9, "58": 53.9, "60": 47.9},
+            "36": {"45": 140.7, "50": 89.8, "55": 65.9, "58": 56.9, "60": 50.9},
+            "37": {"45": 158.7, "50": 95.8, "55": 68.9, "58": 59.9, "60": 53.9},
+            "38": {"45": 182.6, "50": 104.8, "55": 74.9, "58": 62.9, "60": 56.9},
+            "39": {"45": 215.5, "50": 116.8, "55": 77.9, "58": 65.9, "60": 59.9},
+            "40": {"45": 260.4, "50": 128.7, "55": 83.8, "58": 68.9, "60": 62.9},
+            "41": {"50": 143.7, "55": 89.8, "58": 74.9, "60": 65.9},
+            "42": {"50": 161.6, "55": 98.8, "58": 80.8, "60": 71.9},
+            "43": {"50": 185.6, "55": 107.8, "58": 86.8, "60": 74.9},
+            "44": {"50": 215.5, "55": 116.8, "58": 92.8, "60": 80.8},
+            "45": {"50": 260.4, "55": 128.7, "58": 98.8, "60": 86.8},
+            "46": {"55": 143.7, "58": 107.8, "60": 92.8},
+            "47": {"55": 164.6, "58": 119.8, "60": 101.8},
+            "48": {"55": 188.6, "58": 131.7, "60": 110.8},
+            "49": {"55": 218.5, "58": 146.7, "60": 119.8},
+            "50": {"55": 263.4, "58": 164.6, "60": 131.7},
+            "51": {"58": 194.6, "60": 155.7},
+            "52": {"58": 224.5, "60": 176.6},
+            "53": {"58": 266.4, "60": 197.6},
+            "54": {"60": 227.5},
+            "55": {"60": 269.4}
+        },
+        "halfyearly": {
+            "19": {"35": 153.7, "40": 112.3, "45": 88.7, "50": 71, "55": 59.2, "58": 53.2, "60": 53.2},
+            "20": {"35": 159.6, "40": 118.3, "45": 94.6, "50": 76.9, "55": 59.2, "58": 59.2, "60": 53.2},
+            "21": {"35": 171.4, "40": 124.2, "45": 94.6, "50": 76.9, "55": 65.1, "58": 59.2, "60": 53.2},
+            "22": {"35": 189.2, "40": 130.1, "45": 100.5, "50": 82.8, "55": 65.1, "58": 59.2, "60": 59.2},
+            "23": {"35": 206.9, "40": 141.9, "45": 106.4, "50": 82.8, "55": 71, "58": 59.2, "60": 59.2},
+            "24": {"35": 224.6, "40": 153.7, "45": 112.3, "50": 88.7, "55": 71, "58": 65.1, "60": 59.2},
+            "25": {"35": 248.3, "40": 159.6, "45": 118.3, "50": 94.6, "55": 76.9, "58": 65.1, "60": 65.1},
+            "26": {"35": 277.8, "40": 171.4, "45": 124.2, "50": 94.6, "55": 76.9, "58": 71, "60": 65.1},
+            "27": {"35": 313.3, "40": 189.2, "45": 130.1, "50": 100.5, "55": 82.8, "58": 71, "60": 71},
+            "28": {"35": 360.6, "40": 206.9, "45": 141.9, "50": 106.4, "55": 82.8, "58": 76.9, "60": 71},
+            "29": {"35": 425.6, "40": 224.6, "45": 153.7, "50": 112.3, "55": 88.7, "58": 76.9, "60": 76.9},
+            "30": {"35": 508.3, "40": 248.3, "45": 165.5, "50": 118.3, "55": 94.6, "58": 82.8, "60": 76.9},
+            "31": {"40": 277.8, "45": 177.4, "50": 124.2, "55": 100.5, "58": 88.7, "60": 82.8},
+            "32": {"40": 313.3, "45": 189.2, "50": 136, "55": 100.5, "58": 88.7, "60": 82.8},
+            "33": {"40": 360.6, "45": 206.9, "50": 141.9, "55": 106.4, "58": 94.6, "60": 88.7},
+            "34": {"40": 425.6, "45": 224.6, "50": 153.7, "55": 112.3, "58": 100.5, "60": 88.7},
+            "35": {"40": 508.3, "45": 248.3, "50": 165.5, "55": 118.3, "58": 106.4, "60": 94.6},
+            "36": {"45": 277.8, "50": 177.4, "55": 130.1, "58": 112.3, "60": 100.5},
+            "37": {"45": 313.3, "50": 189.2, "55": 136, "58": 118.3, "60": 106.4},
+            "38": {"45": 360.6, "50": 206.9, "55": 147.8, "58": 124.2, "60": 112.3},
+            "39": {"45": 425.6, "50": 230.5, "55": 153.7, "58": 130.1, "60": 118.3},
+            "40": {"45": 514.2, "50": 254.2, "55": 165.5, "58": 136, "60": 124.2},
+            "41": {"50": 283.7, "55": 177.4, "58": 147.8, "60": 130.1},
+            "42": {"50": 319.2, "55": 195.1, "58": 159.6, "60": 141.9},
+            "43": {"50": 366.5, "55": 212.8, "58": 171.4, "60": 147.8},
+            "44": {"50": 425.6, "55": 230.5, "58": 183.3, "60": 159.6},
+            "45": {"50": 514.2, "55": 254.2, "58": 195.1, "60": 171.4},
+            "46": {"55": 283.7, "58": 212.8, "60": 183.3},
+            "47": {"55": 325.1, "58": 236.5, "60": 201},
+            "48": {"55": 372.4, "58": 260.1, "60": 218.7},
+            "49": {"55": 431.5, "58": 289.6, "60": 236.5},
+            "50": {"55": 520.1, "58": 325.1, "60": 260.1},
+            "51": {"58": 384.2, "60": 307.4},
+            "52": {"58": 443.3, "60": 348.7},
+            "53": {"58": 526, "60": 390.1},
+            "54": {"60": 449.2},
+            "55": {"60": 532}
+        },
+        "yearly": {
+            "19": {"35": 302.7, "40": 221.2, "45": 174.7, "50": 139.7, "55": 116.5, "58": 104.8, "60": 104.8},
+            "20": {"35": 314.3, "40": 232.9, "45": 186.3, "50": 151.4, "55": 116.5, "58": 116.5, "60": 104.8},
+            "21": {"35": 337.6, "40": 244.5, "45": 186.3, "50": 151.4, "55": 128.1, "58": 116.5, "60": 104.8},
+            "22": {"35": 372.5, "40": 256.1, "45": 197.9, "50": 163, "55": 128.1, "58": 116.5, "60": 116.5},
+            "23": {"35": 407.5, "40": 279.4, "45": 209.6, "50": 163, "55": 139.7, "58": 116.5, "60": 116.5},
+            "24": {"35": 442.4, "40": 302.7, "45": 221.2, "50": 174.7, "55": 139.7, "58": 128.1, "60": 116.5},
+            "25": {"35": 488.9, "40": 314.3, "45": 232.9, "50": 186.3, "55": 151.4, "58": 128.1, "60": 128.1},
+            "26": {"35": 547.1, "40": 337.6, "45": 244.5, "50": 186.3, "55": 151.4, "58": 139.7, "60": 128.1},
+            "27": {"35": 617, "40": 372.5, "45": 256.1, "50": 197.9, "55": 163, "58": 139.7, "60": 139.7},
+            "28": {"35": 710.1, "40": 407.5, "45": 279.4, "50": 209.6, "55": 163, "58": 151.4, "60": 139.7},
+            "29": {"35": 838.1, "40": 442.4, "45": 302.7, "50": 221.2, "55": 174.7, "58": 151.4, "60": 151.4},
+            "30": {"35": 1001.1, "40": 488.9, "45": 326, "50": 232.9, "55": 186.3, "58": 163, "60": 151.4},
+            "31": {"40": 547.1, "45": 349.3, "50": 244.5, "55": 197.9, "58": 174.7, "60": 163},
+            "32": {"40": 617, "45": 372.5, "50": 267.8, "55": 197.9, "58": 174.7, "60": 163},
+            "33": {"40": 710.1, "45": 407.5, "50": 279.4, "55": 209.6, "58": 186.3, "60": 174.7},
+            "34": {"40": 838.1, "45": 442.4, "50": 302.7, "55": 221.2, "58": 197.9, "60": 174.7},
+            "35": {"40": 1001.1, "45": 488.9, "50": 326, "55": 232.9, "58": 209.6, "60": 186.3},
+            "36": {"45": 547.1, "50": 349.3, "55": 256.1, "58": 221.2, "60": 197.9},
+            "37": {"45": 617, "50": 372.5, "55": 267.8, "58": 232.9, "60": 209.6},
+            "38": {"45": 710.1, "50": 407.5, "55": 291.1, "58": 244.5, "60": 221.2},
+            "39": {"45": 838.1, "50": 454, "55": 302.7, "58": 256.1, "60": 232.9},
+            "40": {"45": 1012.7, "50": 500.6, "55": 326, "58": 267.8, "60": 244.5},
+            "41": {"50": 558.8, "55": 349.3, "58": 291.1, "60": 256.1},
+            "42": {"50": 628.6, "55": 384.2, "58": 314.3, "60": 279.4},
+            "43": {"50": 721.7, "55": 419.1, "58": 337.6, "60": 291.1},
+            "44": {"50": 838.1, "55": 454, "58": 360.9, "60": 314.3},
+            "45": {"50": 1012.7, "55": 500.6, "58": 384.2, "60": 337.6},
+            "46": {"55": 558.8, "58": 419.1, "60": 360.9},
+            "47": {"55": 640.3, "58": 465.7, "60": 395.8},
+            "48": {"55": 733.4, "58": 512.2, "60": 430.7},
+            "49": {"55": 849.8, "58": 570.4, "60": 465.7},
+            "50": {"55": 1012.4, "58": 640.3, "60": 512.2},
+            "51": {"58": 756.7, "60": 605.3},
+            "52": {"58": 873.1, "60": 686.8},
+            "53": {"58": 1036, "60": 768.3},
+            "54": {"60": 884.7},
+            "55": {"60": 1047.7}
+        }
+    };
+
+    function syncInput(val) {
+        document.getElementById('saInput').value = parseFloat(val).toFixed(1);
+        calculateAll();
+    }
+
+    function syncSlider(val) {
+        if (val >= 0.2 && val <= 50) {
+            document.getElementById('saSlider').value = val;
+            calculateAll();
+        }
+    }
+
+    function calculateExcelIRR(maturityValue, installmentAmount, totalPayments, paymentsPerYear, type) {
+        if (installmentAmount <= 0 || maturityValue <= 0) return 0;
+        let r = 0.05 / paymentsPerYear; 
+        for (let i = 0; i < 100; i++) {
+            let powN = Math.pow(1 + r, totalPayments);
+            let f, df;
+            if (type === 1) { 
+                let powN1 = Math.pow(1 + r, totalPayments + 1);
+                f = installmentAmount * ((powN1 - (1 + r)) / r) - maturityValue;
+                df = installmentAmount * (((totalPayments * powN - (powN - 1) / r) * (1 + r) / r) + (powN - 1) / r);
+            } else { 
+                f = installmentAmount * ((powN - 1) / r) - maturityValue;
+                df = installmentAmount * ((totalPayments * Math.pow(1 + r, totalPayments - 1) * r - (powN - 1)) / (r * r));
+            }
+            let nextR = r - f / df;
+            if (Math.abs(nextR - r) < 1e-10) return nextR * paymentsPerYear * 100;
+            r = nextR;
+        }
+        return 0;
+    }
+
+    function calculateAll() {
+        const dobVal = document.getElementById('dob').value;
+        const startVal = document.getElementById('startDate').value;
+        const saLacs = parseFloat(document.getElementById('saInput').value);
+        const sa = saLacs * 100000;
+        const mode = document.querySelector('input[name="payMode"]:checked').value;
+        const tableBody = document.getElementById('comparisonBody');
+        tableBody.innerHTML = "";
+
+        if (!dobVal || !startVal || isNaN(sa)) return;
+        
+        const dob = new Date(dobVal);
+        const startDate = new Date(startVal);
+        let ageNextBirthday = startDate.getFullYear() - dob.getFullYear();
+        let bdayInStartYear = new Date(startDate.getFullYear(), dob.getMonth(), dob.getDate());
+        if (startDate >= bdayInStartYear) ageNextBirthday++;
+        document.getElementById('ageIndicator').innerText = ageNextBirthday;
+
+        const maturities = ["35", "40", "45", "50", "55", "58", "60"];
+        const selectedModeRates = rates[mode];
+        const rateRow = selectedModeRates ? selectedModeRates[ageNextBirthday.toString()] : null;
+
+        let paymentsPerYear = 12, modeMonths = 1, irrType = 1;
+        if(mode === 'quarterly') { paymentsPerYear = 4; modeMonths = 3; }
+        if(mode === 'halfyearly') { paymentsPerYear = 2; modeMonths = 6; }
+        if(mode === 'yearly') { paymentsPerYear = 1; modeMonths = 12; }
+
+        maturities.forEach(mAgeStr => {
+            const mAge = parseInt(mAgeStr);
+            const term = mAge - ageNextBirthday;
+            if (rateRow && rateRow[mAgeStr] && term >= 5) {
+                const netPrem = Math.ceil(((sa / 5000) * rateRow[mAgeStr]) - (Math.floor(sa / 20000) * modeMonths));
+                const totalInvested = (netPrem * paymentsPerYear) * term;
+                const totalMaturity = sa + (sa * 52 * term / 1000);
+                const irr = calculateExcelIRR(totalMaturity, netPrem, term * paymentsPerYear, paymentsPerYear, irrType);
+                const mDate = new Date(startDate);
+                mDate.setFullYear(startDate.getFullYear() + term);
+                const dateDisplay = `${String(mDate.getDate()).padStart(2, '0')} ${mDate.toLocaleString('en-GB', { month: 'short' })} ${String(mDate.getFullYear()).slice(-2)}`;
+
+                tableBody.innerHTML += `<tr>
+                    <td class="col-age">${mAge} (${term}y)<br><span class="mat-date-stack">${dateDisplay}</span></td>
+                    <td class="col-prem">₹${netPrem.toLocaleString('en-IN')}</td>
+                    <td class="col-invest">₹${totalInvested.toLocaleString('en-IN')}</td>
+                    <td class="col-earn">₹${(totalMaturity - totalInvested).toLocaleString('en-IN')}</td>
+                    <td class="col-mat">₹${totalMaturity.toLocaleString('en-IN')}</td>
+                    <td class="col-irr">${irr.toFixed(2)}%</td>
+                </tr>`;
+            }
+        });
+    }
+
+    async function downloadPDF() {
+        const dobVal = document.getElementById('dob').value;
+        const saLacs = document.getElementById('saInput').value;
+        const age = document.getElementById('ageIndicator').innerText;
+        
+        const pdfContent = document.getElementById('pdf-export-content');
+        const pdfTables = document.getElementById('pdf-tables-container');
+        document.getElementById('pdf-inputs').innerHTML = `
+            <strong>Sum Assured:</strong> ₹${(saLacs*100000).toLocaleString('en-IN')} | 
+            <strong>Age:</strong> ${age} | <strong>DOB:</strong> ${dobVal}
+        `;
+        
+        pdfTables.innerHTML = "";
+        const modes = [
+            {id: 'monthly', label: 'MONTHLY', freq: 12, mm: 1, type: 1},
+            {id: 'quarterly', label: 'QUARTERLY', freq: 4, mm: 3, type: 1},
+            {id: 'halfyearly', label: 'HALF-YEARLY', freq: 2, mm: 6, type: 1},
+            {id: 'yearly', label: 'ANNUAL', freq: 1, mm: 12, type: 1}
+        ];
+
+        modes.forEach(m => {
+            if(!rates[m.id][age.toString()]) return;
+            const mRates = rates[m.id][age.toString()];
+            let rows = "";
+            ["35", "40", "45", "50", "55", "58", "60"].forEach(ma => {
+                const term = parseInt(ma) - parseInt(age);
+                if(mRates[ma] && term >= 5) {
+                    const sa = saLacs * 100000;
+                    const prem = Math.ceil(((sa / 5000) * mRates[ma]) - (Math.floor(sa / 20000) * m.mm));
+                    const inv = prem * m.freq * term;
+                    const mat = sa + (sa * 52 * term / 1000);
+                    const earnings = mat - inv;
+                    const irr = calculateExcelIRR(mat, prem, term * m.freq, m.freq, m.type);
+                    rows += `<tr><td>${ma} (${term}y)</td><td>₹${prem.toLocaleString()}</td><td>₹${inv.toLocaleString()}</td><td>₹${earnings.toLocaleString()}</td><td>₹${mat.toLocaleString()}</td><td>${irr.toFixed(2)}%</td></tr>`;
+                }
+            });
+            pdfTables.innerHTML += `
+                <div class="pdf-section-title">${m.label}</div>
+                <table class="pdf-table">
+                    <thead><tr><th>Maturity Age</th><th>Premium</th><th>Total Invested</th><th>Net Profit</th><th>Total Maturity</th><th>IRR</th></tr></thead>
+                    <tbody>${rows}</tbody>
+                </table>`;
+        });
+
+        pdfContent.style.display = 'block';
+        const opt = {
+            margin: 10,
+            filename: 'PLI_Santosh_Comparison.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
+        
+        try {
+            await html2pdf().set(opt).from(pdfContent).save();
+        } finally {
+            pdfContent.style.display = 'none';
+        }
+    }
+
+    calculateAll();
+</script>
+</body>
+</html>
